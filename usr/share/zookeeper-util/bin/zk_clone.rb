@@ -15,9 +15,9 @@ optparse = OptionParser.new do|opts|
    options[:source]  = ""
    options[:target]  = ""
 
-   opts.on( '-s', '--source_connectstring host:port', String, "server info for clone source"){|cs| options[:source] = cs}
-   opts.on( '-t', '--target_connectstring host:port', String, "server info for clone target"){|cs| options[:target] = cs}
-   opts.on( '-p', '--start_path path', String, "path to dump, defaults to '/'"){|p| options[:path] = p}
+   opts.on( '-s', '--source_connectstring host:port', String, "Server info for clone source"){|cs| options[:source] = cs}
+   opts.on( '-t', '--target_connectstring host:port', String, "Server info for clone target"){|cs| options[:target] = cs}
+   opts.on( '-p', '--start_path path', String, "Path to clone, defaults to '/'"){|p| options[:path] = p}
    opts.on( '-v', '--verbose', 'Output more information' ){options[:verbose] = true}
    opts.on( '-h', '--help', 'Display this screen' ){puts opts; exit}
  end
