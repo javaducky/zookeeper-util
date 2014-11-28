@@ -110,10 +110,7 @@ module Zookeeper
       puts "Cloning \"" + path + "\"" if @verbose
       source.connection.get_children(path, false).each do |node|
         next if path.eql?('/') && node.eql?('zookeeper')
-
-        # unless path_exists?(path)
-          create_path_recursively(path) if !path_exists?(path)
-        # end
+        create_path_recursively(path) if !path_exists?(path)
 
         begin
           stat = Stat.new
