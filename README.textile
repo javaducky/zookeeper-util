@@ -7,10 +7,11 @@ All operations implicitly exclude the /zookeeper path. Please try not to use wit
 ** keep the data editable
 * *import* (write) a full (or partial) export off of another zk instance
 * *purge* (delete) all data from a running zk instance
+* *clone* directly (copy) data from one running zk instance into another
 
 There is only one executable (*zkutil*) that understands the three commands specified above with the following options:
 
-bc. Usage: zkutil <dump|import|purge> -c host:port [options]
+bc. Usage: zkutil <dump|import|purge|clone> [options]
 
 h5. dump
 
