@@ -107,11 +107,9 @@ module Zookeeper
     end
 
     def clone(source, path)
-      puts "Cloning \"" + path + "\"" if @verbose
-      source.connection.get_children(path, false).each do |node|
-        next if path.eql?('/') && node.eql?('zookeeper')
+      if !path.eql?('/zookeeper')
+        puts "Cloning \"" + path + "\"" if @verbose
         create_path_recursively(path) if !path_exists?(path)
-
         begin
           stat = Stat.new
           bytes = source.connection.get_data(path, false, stat)
@@ -119,13 +117,9 @@ module Zookeeper
         rescue
           puts "#$!"
         end
-
-        if (path.eql?('/'))
-          clone(source, '/' + node)
-        else
+        source.connection.get_children(path, false).each do |node|
           clone(source, path + '/' + node)
         end
-
       end
     end
 
